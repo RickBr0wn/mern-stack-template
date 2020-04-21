@@ -9,8 +9,8 @@ import Register from './Register'
 
 function App() {
   return (
-    <Router >
-      <div data-testid="app" >
+    <Router>
+      <div data-testid="app">
         <Navbar />
         <Route exact path="/" component={Home} />
         <Route path="/register" component={Register} />
