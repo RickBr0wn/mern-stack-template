@@ -1,0 +1,35 @@
+{
+  "/Users/rickbr0wn/Repos/myRepos/2020/webpack-react/src/components/App.js": {
+    "path": "/Users/rickbr0wn/Repos/myRepos/2020/webpack-react/src/components/App.js",
+    "statementMap": {
+      "0": {
+        "start": { "line": 3, "column": 12 },
+        "end": { "line": 9, "column": 1 }
+      },
+      "1": {
+        "start": { "line": 4, "column": 2 },
+        "end": { "line": 8, "column": 3 }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": { "line": 3, "column": 12 },
+          "end": { "line": 3, "column": 13 }
+        },
+        "loc": {
+          "start": { "line": 3, "column": 18 },
+          "end": { "line": 9, "column": 1 }
+        },
+        "line": 3
+      }
+    },
+    "branchMap": {},
+    "s": { "0": 1, "1": 1 },
+    "f": { "0": 1 },
+    "b": {},
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "78b454308d7ac1d977b5cc3d2a2920f59d704e45"
+  }
+}
