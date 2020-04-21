@@ -1,4 +1,4 @@
-# Authentication Server Template
+# Mern Stack Template
 
 This is a boilerplate template for speeding up the development process in making MERN apps.
 
