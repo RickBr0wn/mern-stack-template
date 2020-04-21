@@ -9,8 +9,5 @@ describe('<App />', () => {
     const { getByTestId } = render(<App />)
 
     expect(getByTestId('app')).not.toBeNull()
-    expect(getByTestId('app')).toHaveTextContent(
-      'Webpack & React minimal boilerplate.'
-    )
   })
 })

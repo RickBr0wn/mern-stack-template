@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const router = require('./Routes')
 const authRouter = require('./Routes/authRoutes')
 const cookieParser = require('cookie-parser')
+const cors = require('cors')
 
 const app = express()
 const port = 5000
@@ -16,6 +17,7 @@ mongoose.connect(
   }
 ).catch(err => console.error(err))
 
+app.use(cors())
 app.use(cookieParser())
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
