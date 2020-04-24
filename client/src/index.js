@@ -1,12 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './components/App'
-import { CSSReset, ThemeProvider, theme } from '@chakra-ui/core'
+import { BrowserRouter as Router } from 'react-router-dom'
 
 ReactDOM.render(
-  <ThemeProvider theme={theme}>
-    <CSSReset />
-    <App />
-  </ThemeProvider>,
-  document.getElementById('root')
+	<Router>
+		<App />
+	</Router>,
+	document.getElementById('root')
 )
