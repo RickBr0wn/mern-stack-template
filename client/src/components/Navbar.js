@@ -1,20 +1,24 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { Box, Flex } from '@chakra-ui/core'
 
 const Navbar = () => {
-  return (
-    <div>
-      <Link to="/">
-        <div>Home</div>
-      </Link>
-      <Link to="/admin">
-        <div>Admin</div>
-      </Link>
-      <Link to="/register">
-        <div>Register</div>
-      </Link>
-    </div>
-  )
+	return (
+		<Box data-testid='navbar'>
+			<Link data-testid='link' to='/'>
+				<Box>Home</Box>
+			</Link>
+			<Link data-testid='link' to='/register'>
+				<Box>Register</Box>
+			</Link>
+			<Link data-testid='link' to='/login'>
+				<Box>Login</Box>
+			</Link>
+			<Link data-testid='link' to='/admin'>
+				<Box>Admin</Box>
+			</Link>
+		</Box>
+	)
 }
 
 export default Navbar
