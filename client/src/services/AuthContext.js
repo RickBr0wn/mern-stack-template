@@ -35,7 +35,7 @@ function AuthProvider({ children }) {
 }
 
 AuthProvider.propTypes = {
-  children: PropTypes.object,
+  children: PropTypes.array,
 }
 
 function useAuthContext() {

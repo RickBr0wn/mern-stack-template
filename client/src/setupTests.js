@@ -2,16 +2,22 @@
 // allows you to do things like:
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
-import React, { Fragment } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import '@testing-library/jest-dom/extend-expect'
 import fetch from 'node-fetch'
 import { render } from '@testing-library/react'
 import { Router } from 'react-router-dom'
 import { createMemoryHistory } from 'history'
+import { AuthProvider } from './services/AuthContext'
+import { ThemeProvider, theme } from '@chakra-ui/core'
 
 const AllTheProviders = ({ children }) => {
-  return <Fragment>{children}</Fragment>
+  return (
+    <ThemeProvider the={theme}>
+      <AuthProvider>{children}</AuthProvider>
+    </ThemeProvider>
+  )
 }
 
 AllTheProviders.propTypes = {

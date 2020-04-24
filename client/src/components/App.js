@@ -8,7 +8,9 @@ import { withRouter } from 'react-router'
 import { Switch, Route } from 'react-router-dom'
 
 const LocationDisplay = withRouter(({ location }) => (
-  <div data-testid="location-display">{location.pathname}</div>
+  <div data-testid="location-display">
+    current route: localhost:5000{location.pathname}
+  </div>
 ))
 
 function App() {
