@@ -3,6 +3,7 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import React, { Fragment } from 'react'
+import PropTypes from 'prop-types'
 import '@testing-library/jest-dom/extend-expect'
 import fetch from 'node-fetch'
 import { render } from '@testing-library/react'
@@ -10,17 +11,32 @@ import { Router } from 'react-router-dom'
 import { createMemoryHistory } from 'history'
 
 const AllTheProviders = ({ children }) => {
-	return <Fragment>{children}</Fragment>
+  return <Fragment>{children}</Fragment>
 }
 
-global.fetch = fetch
-global.renderWithRouter = (ui, { route = '/', history = createMemoryHistory({ initialEntries: [ route ] }) } = {}) => {
-	return {
-		...render(<Router history={history}>{ui}</Router>),
-		// adding `history` to the returned utilities to allow us
-		// to reference it in our tests (just try to avoid using
-		// this to test implementation details).
-		history
-	}
+AllTheProviders.propTypes = {
+  children: PropTypes.array,
 }
-global.renderAllTheProviders = (ui, options) => renderWithRouter(ui, { wrapper: AllTheProviders, ...options })
+
+const renderWithRouter = (
+  ui,
+  {
+    route = '/',
+    history = createMemoryHistory({ initialEntries: [route] }),
+  } = {}
+) => {
+  return {
+    ...render(<Router history={history}>{ui}</Router>),
+    // adding `history` to the returned utilities to allow us
+    // to reference it in our tests (just try to avoid using
+    // this to test implementation details).
+    history,
+  }
+}
+
+const renderAllTheProviders = (ui, options) =>
+  renderWithRouter(ui, { wrapper: AllTheProviders, ...options })
+
+global.fetch = fetch
+global.renderAllTheProviders = renderAllTheProviders
+global.renderWithRouter = renderWithRouter

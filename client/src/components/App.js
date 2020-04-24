@@ -7,21 +7,23 @@ import Register from './Register'
 import { withRouter } from 'react-router'
 import { Switch, Route } from 'react-router-dom'
 
-const LocationDisplay = withRouter(({ location }) => <div data-testid='location-display'>{location.pathname}</div>)
+const LocationDisplay = withRouter(({ location }) => (
+  <div data-testid="location-display">{location.pathname}</div>
+))
 
 function App() {
-	return (
-		<div data-testid='app'>
-			<Navbar />
-			<LocationDisplay />
-			<Switch>
-				<Route exact path='/' component={Home} />
-				<Route path='/register' component={Register} />
-				<Route path='/login' component={Login} />
-				<Route path='/admin' component={Admin} />
-			</Switch>
-		</div>
-	)
+  return (
+    <div data-testid="app">
+      <Navbar />
+      <LocationDisplay />
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/register" component={Register} />
+        <Route path="/login" component={Login} />
+        <Route path="/admin" component={Admin} />
+      </Switch>
+    </div>
+  )
 }
 
 export default App
