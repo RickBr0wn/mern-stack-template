@@ -4,6 +4,7 @@ import Home from './Home'
 import Login from './Login'
 import Admin from './Admin'
 import Register from './Register'
+import Todos from './Todos'
 import { withRouter } from 'react-router'
 import { Switch, Route } from 'react-router-dom'
 
@@ -23,6 +24,7 @@ function App() {
         <Route path="/register" component={Register} />
         <Route path="/login" component={Login} />
         <Route path="/admin" component={Admin} />
+        <Route path="/todos" component={Todos} />
       </Switch>
     </div>
   )
