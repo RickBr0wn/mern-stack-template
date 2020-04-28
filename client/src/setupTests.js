@@ -21,7 +21,7 @@ const AllTheProviders = ({ children }) => {
 }
 
 AllTheProviders.propTypes = {
-  children: PropTypes.array,
+  children: PropTypes.object,
 }
 
 const renderWithRouter = (
@@ -43,6 +43,10 @@ const renderWithRouter = (
 const renderAllTheProviders = (ui, options) =>
   renderWithRouter(ui, { wrapper: AllTheProviders, ...options })
 
+const renderWithContext = (ui, options) =>
+  render(ui, { wrapper: AllTheProviders, ...options })
+
 global.fetch = fetch
+global.renderWithContext = renderWithContext
 global.renderAllTheProviders = renderAllTheProviders
 global.renderWithRouter = renderWithRouter

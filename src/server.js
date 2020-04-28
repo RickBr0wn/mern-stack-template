@@ -1,4 +1,5 @@
 require('dotenv').config()
+require('@babel/polyfill')
 const express = require('express')
 const mongoose = require('mongoose')
 const router = require('./Routes')
@@ -9,13 +10,15 @@ const cors = require('cors')
 const app = express()
 const port = 5000
 
-mongoose.connect(
-  process.env.MONGODB_URL,
-  { useNewUrlParser: true, useUnifiedTopology: true },
-  () => {
-    console.log('Successfully connected to database.')
-  }
-).catch(err => console.error(err))
+mongoose
+  .connect(
+    process.env.MONGODB_URL,
+    { useNewUrlParser: true, useUnifiedTopology: true },
+    () => {
+      console.log('Successfully connected to database.')
+    }
+  )
+  .catch(err => console.error(err))
 
 app.use(cors())
 app.use(cookieParser())
@@ -30,4 +33,6 @@ app.use('/auth', authRouter)
 
 app.use('/api', router)
 
-app.listen(port, () => console.log(`Express dev server started on port ${port}`))
+app.listen(port, () =>
+  console.log(`Express dev server started on port ${port}`)
+)

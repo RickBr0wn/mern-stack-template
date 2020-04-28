@@ -47,26 +47,35 @@ exports.register = (req, res) => {
 
 exports.login = (req, res) => {
   if (req.isAuthenticated()) {
+    console.log('server-side login')
     const { _id, username, role } = req.user
     const token = signToken(_id)
     res.cookie('access_token', token, { httpOnly: true, sameSite: true })
-    return res.status(200).json({ isAuthenticated: true, user: { username, role } })
+    return res
+      .status(200)
+      .json({ isAuthenticated: true, user: { username, role } })
   }
 }
 
 exports.logout = (req, res) => {
   res.clearCookie('access_token')
-  return res.status(200).json({ user: { username: '', role: '' }, success: true })
+  return res
+    .status(200)
+    .json({ user: { username: '', role: '' }, success: true })
 }
 
 exports.authenticated = (req, res) => {
   const { username, role } = req.user
-  return res.status(200).json({ isAuthenticated: true, user: { username, role } })
+  return res
+    .status(200)
+    .json({ isAuthenticated: true, user: { username, role } })
 }
 
 exports.admin = (req, res) => {
   if (req.user.role === 'admin') {
-    return res.status(200).json({ message: { msgBody: 'You are an admin', msgError: false } })
+    return res
+      .status(200)
+      .json({ message: { msgBody: 'You are an admin', msgError: false } })
   }
 }
 

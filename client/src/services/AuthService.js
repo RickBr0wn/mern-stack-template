@@ -9,12 +9,17 @@ const header = user => ({
 })
 
 export default {
-  login: user =>
-    fetch('http://localhost:5000/auth/login', header(user)).then(res =>
-      res.status !== 401
-        ? res.json().then(json => json)
-        : { isAuthenticated: false, user: { username: '', role: '' } }
-    ),
+  login: async user =>
+    await fetch('http://localhost:5000/auth/login', header(user))
+      .then(res => {
+        console.log('client-side-login')
+        return res.status !== 401
+          ? res.json().then(json => json)
+          : { isAuthenticated: false, user: { username: '', role: '' } }
+      })
+      .catch(err => {
+        throw new Error('hmm..', err)
+      }),
 
   register: user =>
     fetch('http://localhost:5000/auth/register', header(user))
@@ -36,5 +41,6 @@ export default {
   test: () =>
     fetch('http://localhost:5000/auth/test')
       .then(res => res)
+      .then(json => json)
       .catch(err => err),
 }
